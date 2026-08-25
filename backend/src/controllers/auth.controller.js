@@ -4,13 +4,13 @@ import bcrypt from "bcrypt";
 
 export const register = async (req, res) => {
   try {
-    const { email, password, timezone } = req.body;
+    const { name, email, password, timezone } = req.body;
 
     // 1. Required fields
-    if (!email || !password || !timezone) {
+    if (!name || !email || !password || !timezone) {
       return res.status(400).json({
         success: false,
-        message: "Email, password and timezone are required",
+        message: "All fields are required",
       });
     }
 
@@ -64,6 +64,7 @@ export const register = async (req, res) => {
 
     const user = await prisma.user.create({
       data: {
+        name,
         email: normalizedEmail,
         passwordHash,
         timezone,
