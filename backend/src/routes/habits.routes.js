@@ -1,15 +1,23 @@
-import express from "express"
-import { authenticateUser } from "../middlewares/user.middlware.js"
-import { createHabit, deleteHabit, getHabits, updateHabit } from "../controllers/habits.controller.js"
+import express from "express";
+import { authenticateUser } from "../middlewares/user.middlware.js";
+import {
+  createHabit,
+  deleteHabit,
+  getHabitById,
+  getHabits,
+  updateHabit,
+} from "../controllers/habits.controller.js";
 
-const router = express.Router()
+const router = express.Router();
 
-router.post("/", authenticateUser, createHabit)
+router.post("/", authenticateUser, createHabit);
 
-router.get("/", authenticateUser, getHabits)
+router.get("/", authenticateUser, getHabits);
 
-router.patch("/:habitId", authenticateUser, updateHabit)
+router.patch("/:habitId", authenticateUser, updateHabit);
 
-router.delete("/:habitId", authenticateUser, deleteHabit)
+router.delete("/:habitId", authenticateUser, deleteHabit);
 
-export default router
+router.get("/:habitId", authenticateUser, getHabitById);
+
+export default router;

@@ -4,6 +4,8 @@ import cors from "cors"
 import prisma from "./utils/prisma.js";
 import authRouter from "./routes/auth.routes.js";
 import habitRouter from "./routes/habits.routes.js";
+import checkinRouter from "./routes/checkin.routes.js";
+
 
 const app = express()
 
@@ -34,6 +36,7 @@ app.get("/", async (req, res) => {
 
 app.use("/api/auth", authRouter)
 app.use("/api/habits", habitRouter)
+app.use("/api", checkinRouter)
 
 
 export default app;

@@ -29,6 +29,7 @@ export const useAuth = () => {
   return {
     user,
     loading,
+    setLoading,
     handleRegister,
     handleLogin,
     handleGetCurrentUser
