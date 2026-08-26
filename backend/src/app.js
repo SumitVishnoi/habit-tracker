@@ -3,6 +3,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors"
 import prisma from "./utils/prisma.js";
 import authRouter from "./routes/auth.routes.js";
+import habitRouter from "./routes/habits.routes.js";
 
 const app = express()
 
@@ -32,6 +33,7 @@ app.get("/", async (req, res) => {
 });
 
 app.use("/api/auth", authRouter)
+app.use("/api/habits", habitRouter)
 
 
 export default app;
