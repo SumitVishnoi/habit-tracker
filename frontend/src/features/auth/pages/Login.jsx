@@ -4,11 +4,11 @@ import AuthLayout from "../components/AuthLayout";
 import AuthInput from "../components/AuthInput";
 import PasswordInput from "../components/PasswordInput";
 import AuthButton from "../components/AuthButton";
-import { validateEmail, validatePassword } from "../utils/validator";
 
 // Replace with your router's Link (react-router-dom shown here)
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../hook/useAuth";
+import { validateEmail, validatePassword } from "../utils/validator";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const Login = () => {
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
   const [submitError, setSubmitError] = useState("");
-  const {handleLogin, user, loading, setLoading} = useAuth()
+  const { loading, setLoading, handleLogin, user } = useAuth();
 
   const handleChange = (field) => (e) => {
     setForm((prev) => ({ ...prev, [field]: e.target.value }));
@@ -54,9 +54,9 @@ const Login = () => {
     setLoading(true);
     try {
       // Replace with your real auth call
-      await handleLogin(form)
-      if(user && !loading) {
-        navigate("/")
+      await handleLogin(form);
+      if (user && !loading) {
+        navigate("/");
       }
     } catch (err) {
       setSubmitError("Invalid email or password. Please try again.");
