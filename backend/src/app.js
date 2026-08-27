@@ -12,10 +12,10 @@ const app = express()
 app.use(express.json());
 app.use(cookieParser())
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173", "https://habitly-w7j8.onrender.com"],
     credentials: true
 }))
-app.use(express.static("public"));
+app.use(express.static(path.join(process.cwd(), "public")));
 
 app.get("/", async (req, res) => {
   try {
