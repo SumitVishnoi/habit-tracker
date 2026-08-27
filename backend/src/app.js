@@ -20,7 +20,7 @@ app.use(cors({
   credentials: true
 }));
 
-app.use(express.static(path.join(process.cwd(), "public")));
+app.use(express.static("public"));
 
 app.get("/", async (req, res) => {
   try {
