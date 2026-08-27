@@ -13,7 +13,10 @@ const EmptyState = ({
       {/* Decorative illustration */}
       <div className="relative mb-8">
         <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#DDE6D0] via-[#CBD9BA] to-[#B9CBA6] flex items-center justify-center shadow-sm animate-float">
-          <Icon size={40} className="text-[#2F4A3D]" />
+          {React.createElement(Icon, {
+            size: 40,
+            className: "text-[#2F4A3D]",
+          })}
         </div>
         {/* Decorative dots */}
         <div className="absolute -top-2 -right-2 w-4 h-4 rounded-full bg-[#9CAF88]/30" />

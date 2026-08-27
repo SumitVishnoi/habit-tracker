@@ -9,7 +9,7 @@ const App = () => {
 
   useEffect(() => {
     handleGetCurrentUser()
-  }, [])
+  }, [handleGetCurrentUser])
   return (
     <>
     <RouterProvider router={router} />

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const authApiInstance = axios.create({
-    baseURL: "http://localhost:3000/api",
+    baseURL:"/api",
     withCredentials: true
 })
 
@@ -10,7 +10,7 @@ export const register = async ({name, email, password, timezone}) => {
         name,
         email,
         password,
-        timezone: "Asia/Kolkata"
+        timezone
     })
 
     return response.data

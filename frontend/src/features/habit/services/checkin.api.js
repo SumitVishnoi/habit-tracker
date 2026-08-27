@@ -1,9 +1,9 @@
 import axios from "axios";
 
 const checkinApiInstance = axios.create({
-    baseURL: "http://localhost:3000/api",
-    withCredentials: true
-})
+  baseURL: "/api",
+  withCredentials: true,
+});
 
 export const createCheckIn = async (habitId, date) => {
   const response = await checkinApiInstance.post(
@@ -13,7 +13,7 @@ export const createCheckIn = async (habitId, date) => {
     },
     {
       withCredentials: true,
-    }
+    },
   );
 
   return response.data;
@@ -24,7 +24,7 @@ export const getCheckInHistory = async (habitId) => {
     `/habits/${habitId}/check-ins`,
     {
       withCredentials: true,
-    }
+    },
   );
 
   return response.data;
@@ -35,7 +35,7 @@ export const deleteCheckIn = async (habitId, checkInId) => {
     `/habits/${habitId}/check-ins/${checkInId}`,
     {
       withCredentials: true,
-    }
+    },
   );
 
   return response.data;

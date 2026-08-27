@@ -58,7 +58,7 @@ const Login = () => {
       if (user && !loading) {
         navigate("/");
       }
-    } catch (err) {
+    } catch {
       setSubmitError("Invalid email or password. Please try again.");
     } finally {
       setLoading(false);

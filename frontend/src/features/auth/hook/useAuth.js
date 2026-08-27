@@ -1,6 +1,6 @@
-import { useContext } from "react";
+import { useCallback, useContext } from "react";
 import { getCurrentUser, login, register } from "../services/auth.api";
-import { AuthContext } from "../context/AuthProvider";
+import { AuthContext } from "../context/AuthContext";
 
 export const useAuth = () => {
   const { user, setUser, loading, setLoading } = useContext(AuthContext);
@@ -15,7 +15,7 @@ export const useAuth = () => {
     setUser(data.user);
   };
 
-  const handleGetCurrentUser = async () => {
+  const handleGetCurrentUser = useCallback(async () => {
     try {
       setLoading(true);
       const data = await getCurrentUser();
@@ -25,7 +25,7 @@ export const useAuth = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [setLoading, setUser]);
   return {
     user,
     loading,

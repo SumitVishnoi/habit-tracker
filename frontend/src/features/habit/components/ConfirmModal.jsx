@@ -10,9 +10,11 @@ const ConfirmModal = ({
   description = "This action cannot be undone.",
   confirmText = "Delete",
   cancelText = "Cancel",
-  variant = "danger", // "danger" | "warning"
+  variant = "danger",
 }) => {
   if (!isOpen) return null;
+
+  const isWarning = variant === "warning";
 
   const handleClose = () => {
     if (loading) return;
@@ -30,8 +32,8 @@ const ConfirmModal = ({
       >
         {/* Header */}
         <div className="flex items-start justify-between mb-4">
-          <div className="w-10 h-10 rounded-full bg-[#FBEAE8] flex items-center justify-center">
-            <AlertTriangle size={20} className="text-[#C0392B]" />
+          <div className={`w-10 h-10 rounded-full flex items-center justify-center ${isWarning ? "bg-[#FFF4D6]" : "bg-[#FBEAE8]"}`}>
+            <AlertTriangle size={20} className={isWarning ? "text-[#B7791F]" : "text-[#C0392B]"} />
           </div>
           <button
             type="button"
@@ -65,7 +67,7 @@ const ConfirmModal = ({
             type="button"
             onClick={onConfirm}
             disabled={loading}
-            className="flex-1 h-11 rounded-2xl bg-[#C0392B] text-white font-medium text-sm hover:bg-[#A93226] active:scale-[0.98] transition-all flex items-center justify-center gap-2 disabled:opacity-70"
+            className={`flex-1 h-11 rounded-2xl text-white font-medium text-sm active:scale-[0.98] transition-all flex items-center justify-center gap-2 disabled:opacity-70 ${isWarning ? "bg-[#B7791F] hover:bg-[#996515]" : "bg-[#C0392B] hover:bg-[#A93226]"}`}
           >
             {loading ? (
               <>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   ArrowLeft,
   Flame,
@@ -40,11 +40,7 @@ const HabitDetail = () => {
   const [deleting, setDeleting] = useState(false);
   const [deletingCheckInId, setDeletingCheckInId] = useState(null);
 
-  useEffect(() => {
-    loadData();
-  }, [id]);
-
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     try {
       setLoading(true);
       const [habitData, checkInData] = await Promise.all([
@@ -58,7 +54,11 @@ const HabitDetail = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [id, handleGetHabit, handleGetCheckInHistory, setLoading]);
+
+  useEffect(() => {
+    loadData();
+  }, [loadData]);
 
   const handleCheckIn = async () => {
     try {

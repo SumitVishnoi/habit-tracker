@@ -131,7 +131,7 @@ export const login = async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false,
+      secure: true,
       sameSite: "lax",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
@@ -141,6 +141,7 @@ export const login = async (req, res) => {
       message: "Login successful",
       user: {
         id: user.id,
+        name: user.name,
         email: user.email,
         timezone: user.timezone,
         createdAt: user.createdAt,
@@ -188,6 +189,7 @@ export const getMe = async (req, res) => {
       },
       select: {
         id: true,
+        name: true,
         email: true,
         timezone: true,
         createdAt: true,
