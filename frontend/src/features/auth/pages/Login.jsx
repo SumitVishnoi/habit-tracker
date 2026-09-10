@@ -9,6 +9,7 @@ import AuthButton from "../components/AuthButton";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../hook/useAuth";
 import { validateEmail, validatePassword } from "../utils/validator";
+import { useEffect } from "react";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -55,15 +56,18 @@ const Login = () => {
     try {
       // Replace with your real auth call
       await handleLogin(form);
-      if (user && !loading) {
-        navigate("/");
-      }
     } catch {
       setSubmitError("Invalid email or password. Please try again.");
     } finally {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+  if (user && !loading) {
+    navigate("/");
+  }
+}, [user, loading, navigate]);
 
   return (
     <AuthLayout>

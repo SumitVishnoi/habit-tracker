@@ -8,11 +8,13 @@ export const useAuth = () => {
   const handleRegister = async ({ name, email, password, timezone }) => {
     const data = await register({ name, email, password, timezone });
     setUser(data.user);
+    return data.user
   };
 
   const handleLogin = async ({ email, password }) => {
     const data = await login({ email, password });
     setUser(data.user);
+    return data.user
   };
 
   const handleGetCurrentUser = useCallback(async () => {
